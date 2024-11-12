@@ -122,7 +122,7 @@ const Works: React.FC = () => {
       type: ["App/Dashboard"],
       topic: "Marketing",
       link: "https://github.com/tani06koki/portfolio",
-      skillset: ["React", "Next JS"],
+      skillset: ["React", "Vercel"],
       methods: [],
     },
     // Add more works here
