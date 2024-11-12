@@ -41,12 +41,12 @@ const Works: React.FC = () => {
       id: 3,
       title: "Technical Analysis of Small-Agressive Stock prices",
       description: "Description of project 3",
-      imageUrl: "/api/placeholder/300/200",
+      imageUrl: "/image/project_img/03.png",
       type: ["Research"],
       topic: "Finance",
       link: "https://example.com",
       skillset: ["R", "Python"],
-      methods: ["Sharpe Ratio", "MACD&Singal Line", "RSI"],
+      methods: ["Sharpe Ratio", "MACD & Singal Line", "RSI"],
     },
     {
       id: 4,
@@ -57,7 +57,7 @@ const Works: React.FC = () => {
       topic: "Finance",
       link: "https://example.com",
       skillset: ["Python"],
-      methods: ["Montecal", "MACD&Singal Line", "RSI"],
+      methods: ["Monte Carlo", "Parametric Method", "Historical Method"],
     },
     {
       id: 5,
