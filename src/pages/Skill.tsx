@@ -14,8 +14,8 @@ const Skill: React.FC = () => {
     { icons: Cloud, category: "Cloud", items: ["Azure", "AWS", "GCP"] },
     { icons: ChartNoAxesCombined, category: "Finance", items: ["Portfolio Management", "Derivatives", "Credit Analysis", "Corporate Finance"] },
     { icons: Paintbrush, category: "Frontend", items: ["React", "TypeScript", "Next.js", "Tailwind CSS"] },
-    { icons: ServerCog, category: "Backend", items: ["Node.js", "PostgreSQL", "MongoDB"] },
-    { icons: LayoutGrid, category: "Tools", items: ["Git", "Docker", "SAS", "Alteryx", "Dataiku", "Snowflake", "Tableau", "Power BI", "Google Analytics"] }
+    { icons: ServerCog, category: "Backend/DB", items: ["Snowflake", "PostgreSQL", "MongoDB"] },
+    { icons: LayoutGrid, category: "Tools", items: ["Git", "Docker", "SAS", "Alteryx", "Dataiku", "Tableau", "Power BI", "Google Analytics"] }
   ];
 
   return (
