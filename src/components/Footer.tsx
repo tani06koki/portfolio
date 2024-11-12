@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left - Name */}
           <div className="mb-4 md:mb-0">
-            <div className="relative w-24 h-24 sm:w-36 sm:h-36 md:w-12 md:h-12 shrink-0">
+            <div className="relative w-24 h-24 sm:w-8 sm:h-8 md:w-12 md:h-12 shrink-0">
               <img 
                 onClick={scrollToTop} 
                 src={"/logo/logo_bg.png"}
@@ -29,10 +29,10 @@ const Footer: React.FC = () => {
 
           {/* Link */}
           <div className="flex space-x-6 mb-4 md:mb-0">
-            <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" aria-label="Github">
+            <a href="https://github.com/tani06koki" target="_blank" rel="noopener noreferrer" aria-label="Github">
               <Github className="w-6 h-6 hover:text-gray-400 transition-colors" />
             </a>
-            <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/koki-taniguchi-9242b5226/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Linkedin className="w-6 h-6 hover:text-gray-400 transition-colors" />
             </a>
             <a href="mailto:tani06.bu@gmail.com" aria-label="Email">
