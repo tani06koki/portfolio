@@ -110,7 +110,7 @@ const Career: React.FC = () => {
                 <span className="text-gray-500 mt-2 md:mt-0">{exp.period}</span>
               </div>
               <p className="text-black-300 mb-4">{exp.description}</p>
-              <div className="text-black flex flex-wrap gap-2 mb-6">
+              <div className="text-black flex flex-wrap gap-2 mb-12">
                 {exp.tech.map((tech) => (
                   <span key={tech} className="px-3 py-1 bg-blue-200 rounded-full text-sm">{tech}</span>
                 ))}
@@ -121,7 +121,7 @@ const Career: React.FC = () => {
                     href={exp.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-blue-600 hover:text-purple-600 transition-colors font-medium"
+                    className="inline-flex items-center gap-2 pb-0 text-blue-600 hover:text-purple-600 transition-colors font-medium"
                   >
                     Visit Website →
                   </a>

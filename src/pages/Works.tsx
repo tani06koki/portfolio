@@ -121,7 +121,7 @@ const Works: React.FC = () => {
       imageUrl: "/image/project_img/KokisPortfolio.png",
       type: ["App/Dashboard"],
       topic: "Marketing",
-      link: "https://example.com",
+      link: "https://github.com/tani06koki/portfolio",
       skillset: ["React", "Next JS"],
       methods: [],
     },
@@ -145,7 +145,7 @@ const Works: React.FC = () => {
         Portfolio
       </h1>
 
-      <div className="flex gap-4 pb-28 justify-center items-center">
+      <div className="flex gap-4 pb-28 mx-8 justify-center items-center">
         {["App/Dashboard", "Research", "Visualisation"].map((type) => (
           <button
             key={type}
@@ -184,31 +184,38 @@ const Works: React.FC = () => {
               <p className="text-gray-600 mb-4">{work.description}</p>
               
               <div className="flex flex-wrap gap-2 mb-4">
-                <strong>Type:</strong>{work.type.map((type) => (
+                <strong>Type:</strong>
+                {work.type.map((type) => (
                   <span key={type} className="bg-gray-100 px-3 py-1 rounded-full text-sm font-medium">
                     {type}
                   </span>
                 ))}
               </div>
-              
+
               <div className="mb-4">
                 <strong>Topic:</strong> {work.topic}
               </div>
 
               <div className="mb-4">
-                <strong>Skills:</strong> {work.skillset.map((skillset) => (
-                  <span key={skillset} className="bg-red-100 m-2 px-2.5 py-1 rounded-full text-sm font-small">
-                    {skillset}
-                  </span>
-                ))}
+                <strong>Skills:</strong>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {work.skillset.map((skillset) => (
+                    <span key={skillset} className="bg-red-100 px-2.5 py-1 rounded-full text-sm font-small">
+                      {skillset}
+                    </span>
+                  ))}
+                </div>
               </div>
-              
+
               <div className="mb-4">
-                <strong>Methods:</strong> {work.methods.map((methods) => (
-                  <span key={methods} className="bg-blue-100  m-2 px-2.5 py-1 rounded-full text-sm font-small">
-                    {methods}
-                  </span>
-                ))}
+                <strong>Methods:</strong>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {work.methods.map((methods) => (
+                    <span key={methods} className="bg-blue-100 px-2.5 py-1 rounded-full text-sm font-small">
+                      {methods}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               
