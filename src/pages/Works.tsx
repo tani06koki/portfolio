@@ -145,14 +145,14 @@ const Works: React.FC = () => {
         Portfolio
       </h1>
 
-      <div className="flex max-w-80% gap-4 pb-28 p-8 justify-center items-center">
+      <div className="flex max-w-[80%] gap-4 pb-28 p-8 justify-center items-center sm:max-w-full">
         {["App/Dashboard", "Research", "Visualisation"].map((type) => (
           <button
             key={type}
             onClick={() => setSelectedType(selectedType === type ? null : type)}
             className={`px-4 py-2 rounded-full ${
               selectedType === type ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'
-            } transition-colors`}
+            } transition-colors text-sm sm:text-base`}
           >
             {type}
           </button>
