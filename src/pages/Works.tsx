@@ -145,7 +145,7 @@ const Works: React.FC = () => {
         Portfolio
       </h1>
 
-      <div className="flex gap-4 pb-28 p-8 justify-center items-center">
+      <div className="flex max-w-80% gap-4 pb-28 p-8 justify-center items-center">
         {["App/Dashboard", "Research", "Visualisation"].map((type) => (
           <button
             key={type}
