@@ -74,7 +74,7 @@ const Works: React.FC = () => {
       id: 6,
       title: "Impact on wheat and flour price in Bangladesh by Russia-Ukrain War",
       description: "Description of project 3",
-      imageUrl: "/api/placeholder/300/200",
+      imageUrl: "/image/project_img/06",
       type: ["Research"],
       topic: "Marketing",
       link: "https://example.com",
