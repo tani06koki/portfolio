@@ -15,13 +15,14 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left - Name */}
           <div className="mb-4 md:mb-0">
-            <div className="relative w-48 h-48 md:w-12 md:h-12 shrink-0">
-            <img 
-              onClick={scrollToTop} 
-              src={"/logo/logo_bg.png"}
-              alt="Profile"
-              className="relative rounded-3xl w-full h-full object-cover"
-            /></div>
+            <div className="relative w-24 h-24 sm:w-36 sm:h-36 md:w-12 md:h-12 shrink-0">
+              <img 
+                onClick={scrollToTop} 
+                src={"/logo/logo_bg.png"}
+                alt="Profile"
+                className="relative rounded-3xl w-full h-full object-cover"
+              />
+            </div>
             <h1 className="text-2xl font-bold">Koki Taniguchi</h1>
             <p className="text-gray-400">Data/Finance Analyst</p>
           </div>
