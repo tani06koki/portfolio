@@ -35,8 +35,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section className="relative text-[#F5F6FA] py-16 pb-4 px-4">
-      {/* Blue background covering 40% of section */}
+    <section className="relative text-[#F5F6FA] py-8 md:py-16 px-4">
       <div className="absolute top-0 left-0 w-full h-[40%] bg-[#2E3A59] z-0"></div>
       <div className="absolute bottom-0 left-0 w-full h-[60%] bg-[#F5F6FA] z-0"></div>
 
@@ -44,11 +43,10 @@ const Contact: React.FC = () => {
         {submitted ? (
           <p className="text-center text-green-500">Thank you for your message! I will get back to you soon.</p>
         ) : (
-          <div className="bg-[#FF6B6B] p-16 rounded-3xl shadow-lg flex flex-col lg:flex-row gap-12">
-            {/* Left Column: Form */}
+          <div className="bg-[#FF6B6B] p-8 sm:p-12 lg:p-16 rounded-3xl shadow-lg flex flex-col lg:flex-row gap-8 sm:gap-12">
             <div className="w-full lg:w-1/2 p-4">
-              <h2 className="text-4xl font-bold text-center lg:text-left mb-8">Contact Me</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-center lg:text-left mb-6 lg:mb-8">Contact Me</h2>
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 {error && <p className="text-red-500 text-center">{error}</p>}
 
                 <div>
@@ -112,16 +110,15 @@ const Contact: React.FC = () => {
                 
                 <button
                   type="submit"
-                  className="text-white bg-[#2E3A59] inline-flex items-center px-6 py-3 border border-[#2E3A59] rounded-lg hover:bg-gray-300 hover:text-[#FF6B6B] transition-colors flex justify-center items-center"
+                  className="text-white bg-[#2E3A59] inline-flex items-center px-6 py-3 border border-[#2E3A59] rounded-lg hover:bg-gray-300 hover:text-[#FF6B6B] transition-colors flex justify-center"
                 >
                   Send Message
                 </button>
               </form>
             </div>
 
-            {/* Right Column: Alternative Contact Methods */}
-            <div className="w-full lg:w-1/2 p-4 flex flex-col items-center lg:items-start space-y-6">
-              <h3 className="text-2xl font-bold mb-4 text-center lg:text-left">Other Contact Methods</h3>
+            <div className="w-full lg:w-1/2 p-4 flex flex-col items-center lg:items-start space-y-6 text-center lg:text-left">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4">Other Contact Methods</h3>
               <div className="flex items-center space-x-4">
                 <Mail className="w-6 h-6 text-[#F5F6FA]" />
                 <span className="text-lg">tani06.bu@gmail.com</span>
