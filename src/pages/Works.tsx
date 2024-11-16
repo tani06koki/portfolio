@@ -119,7 +119,7 @@ const Works: React.FC = () => {
       title: "Koki's Portfolio",
       description: "This portfolio website",
       imageUrl: "/image/project_img/KokisPortfolio.png",
-      type: ["App/Dashboard"],
+      type: ["App/Website"],
       topic: "Marketing",
       link: "https://github.com/tani06koki/portfolio",
       skillset: ["React", "Vercel"],
@@ -146,7 +146,7 @@ const Works: React.FC = () => {
       </h1>
 
       <div className="flex w-full max-w-[80%] gap-4 pb-28 px-4 justify-center items-center mx-auto">
-        {["App/Dashboard", "Research", "Visualisation"].map((type) => (
+        {["App/Website", "Research", "Visualisation"].map((type) => (
           <button
             key={type}
             onClick={() => setSelectedType(selectedType === type ? null : type)}
