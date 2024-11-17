@@ -67,7 +67,7 @@ const Career: React.FC = () => {
       period: "July 2021 - November 2024",
       description: "Major: Business Analytics | Banking and Finance Management",
       tech: ["R", "SAS", "Excel VBA", "Portfolio Management", "Derivatives", "Corporate Finance", "Credit Analysis"],
-      website: "https://musa.monash.edu.my/",
+      website: "https://www.monash.edu.my/",
       projects: ["Project D", "Project E"],
       image: "https://via.placeholder.com/150"
     }
