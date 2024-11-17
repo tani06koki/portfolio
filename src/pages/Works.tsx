@@ -50,9 +50,9 @@ const Works: React.FC = () => {
     },
     {
       id: 4,
-      title: "Risk Analysis by VaR",
-      description: "Description of project 3",
-      imageUrl: "/api/placeholder/300/200",
+      title: "Risk Analysis of an equally weighted portfolio by the three methods of VaR",
+      description: "A practice to calculate VaR by three methods, Historical, parametric, and Monte Carlo",
+      imageUrl: "/image/project_img/04.png",
       type: ["Research"],
       topic: "Finance",
       link: "https://example.com",
