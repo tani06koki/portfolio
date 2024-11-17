@@ -51,14 +51,14 @@ const Navbar = () => {
       {/* Desktop Navbar */}
       <nav
         className={`hidden md:block text-[#F5F6FA] fixed w-full z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
+          scrolled ? 'bg-[#2E3A59] backdrop-blur-md shadow-lg' : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-20">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="text-2xl font-bold text-[#2E3A59]"
+              className="text-2xl font-bold text-white/100"
             >
               Koki's Portfolio
             </button>
@@ -88,7 +88,7 @@ const Navbar = () => {
       {/* Mobile Floating Hamburger Button */}
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className="md:hidden fixed bottom-6 right-6 bg-[#2E3A59] p-3 rounded-full shadow-lg focus:outline-none z-50"
+        className="md:hidden fixed bottom-6 right-6 bg-[#FF6B6B] p-3 rounded-full shadow-lg focus:outline-none z-50"
       >
         <svg
           className="w-6 h-6 text-white"
@@ -107,7 +107,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden fixed inset-0 flex items-center justify-center bg-[#2E3A59] bg-opacity-90">
+        <div className="md:hidden fixed inset-0 z-50 flex items-center justify-center bg-[#2E3A59]">
           <div className="space-y-4 flex flex-col items-center">
             {navItems.map(({ id, label }) => (
               <button
