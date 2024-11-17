@@ -51,14 +51,14 @@ const Navbar = () => {
       {/* Desktop Navbar */}
       <nav
         className={`hidden md:block text-[#F5F6FA] fixed w-full z-50 transition-all duration-300 ${
-          scrolled ? 'bg-[#2E3A59] backdrop-blur-md shadow-lg' : 'bg-transparent'
+          scrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-20">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="text-2xl font-bold text-white/100"
+              className="text-2xl font-bold text-[#2E3A59]"
             >
               Koki's Portfolio
             </button>
