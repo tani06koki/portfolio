@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface Experience {
   type: string[];
@@ -14,7 +14,13 @@ interface Experience {
 
 const Career: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("Work"); // Default to "Work"
+  const [isMounted, setIsMounted] = useState(false);
 
+  useEffect(() => {
+    // Trigger animation once the component is mounted
+    setIsMounted(true);
+  }, []);
+  
   const experiences: Experience[] = [
     {
       type: ["Work"],
@@ -71,9 +77,9 @@ const Career: React.FC = () => {
       projects: ["Project D", "Project E"],
       image: "https://via.placeholder.com/150"
     }
+    // Add other experiences...
   ];
 
-  // Filter experiences by selectedType
   const filteredExperiences = experiences.filter((exp) => exp.type.includes(selectedType));
 
   return (
@@ -100,7 +106,16 @@ const Career: React.FC = () => {
           {filteredExperiences.map((exp, index) => (
             <div
               key={index}
-              className="bg-[#F5F6FA] rounded-3xl p-6 relative"
+              className={`bg-[#F5F6FA] rounded-3xl p-6 relative transform transition-transform duration-700 ease-out ${
+                isMounted 
+                  ? index % 2 === 0 
+                    ? 'translate-x-0 opacity-100'  // 偶数: 左からのアニメーション
+                    : 'translate-x-0 opacity-100'  // 奇数: 右からのアニメーション
+                  : index % 2 === 0 
+                    ? '-translate-x-full opacity-0' // 偶数: 初期状態は左側にオフセット
+                    : 'translate-x-full opacity-0'  // 奇数: 初期状態は右側にオフセット
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }} // Delay each item for a staggered effect
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                 <div>
