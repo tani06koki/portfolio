@@ -89,8 +89,8 @@ const Works: React.FC = () => {
       type: ["Research"],
       topic: "Finance",
       link: "https://example.com",
-      skillset: ["Excel", "VBA"],
-      methods: ["Solver"],
+      skillset: ["Excel", "VBA", "Solver"],
+      methods: ["Market Efficient Frontier", "Security Market Line"],
     },
     {
       id: 8,
