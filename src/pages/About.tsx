@@ -3,7 +3,7 @@ import { Mail, Github, Linkedin, Download, Instagram} from 'lucide-react';
 
 const About: React.FC = () => {
   const email = "tani06.bu@gmail.com";
-  const githubUrl = "https://github.com/yourusername"; // Replace with your GitHub URL
+  const githubUrl = "https://github.com/tani06koki"; // Replace with your GitHub URL
   const linkedinUrl = "https://www.linkedin.com/in/koki-taniguchi-9242b5226/"; // Replace with your LinkedIn URL
   const instagramUrl = "https://www.instagram.com/kk_tngc/"; // Replace with your Instagram URL
 

@@ -3,6 +3,52 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronRight, ChevronLeft, House } from 'lucide-react';
 import { works, Work } from './data/works';
 
+// PdfViewer, HtmlViewer, TableauViewer
+const PdfViewer = ({ filePath }: { filePath: string }) => (
+  <iframe
+    src={filePath}
+    width="100%"
+    height="100%"
+    style={{ border: "none" }}
+    title="PDF Viewer"
+  ></iframe>
+);
+
+const HtmlViewer = ({ filePath }: { filePath: string }) => (
+  <iframe
+    src={filePath}
+    width="100%"
+    height="100%"
+    style={{ border: "none" }}
+    title="HTML Viewer"
+  ></iframe>
+);
+
+const TableauViewer = ({ filePath }: { filePath: string }) => (
+  <iframe
+    src={filePath}
+    width="100%"
+    height="100%"
+    style={{ border: "none" }}
+    title="Tableau Viewer"
+  ></iframe>
+);
+
+// FileRenderer
+const FileRenderer = ({ filePath }: { filePath: string }) => {
+  const fileType = filePath.split('.').pop(); // ファイル拡張子を取得
+  switch (fileType) {
+    case "pdf":
+      return <PdfViewer filePath={filePath} />;
+    case "html":
+      return <HtmlViewer filePath={filePath} />;
+    case "tableau":
+      return <TableauViewer filePath={filePath} />;
+    default:
+      return <div className="flex flex-col items-center">No File to Render</div>;
+  }
+};
+
 const WorkDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const work = works.find((w: Work) => w.id === Number(id));
@@ -18,108 +64,137 @@ const WorkDetail: React.FC = () => {
       {/* 左側情報コンポーネント */}
       <div
         className={`transition-all duration-300 ${
-          isOpen ? 'w-[25%]' : 'w-[5%]'
-        } bg-[#2E3A59] shadow-md p-4 flex flex-col justify-between`}
+        isOpen ? 'w-full md:w-[25%]' : 'w-[5%]'
+      } bg-[#2E3A59] shadow-md p-4 flex flex-col justify-between relative`}
       >
-        {/* Header: House Icon */}
-        {isOpen && (
-          <div className="flex items-center mb-4">
-            <House
-              onClick={() => navigate('/')}
-              className="text-white cursor-pointer hover:scale-110 hover:text-[#FF6B6B] transition-transform"
-              size={24}
-            />
-            <span
-              onClick={() => navigate('/')}
-              className="ml-2 text-white cursor-pointer hover:text-[#FF6B6B]"
-            >
-              Back to Portfolio
-            </span>
-          </div>
-        )}
+        {isOpen ? (
+          <>
+            {/* Header: House Icon */}
+            <div className="flex items-center mb-4">
+              <span
+                onClick={() => navigate('/')}
+                className="ml-2 text-white cursor-pointer hover:text-[#FF6B6B]"
+              >
+                ← Back to Portfolio
+              </span>
+            </div>
 
-        {/* Content */}
-        {isOpen && (
-          <div>
-            <h1 className="text-white text-xl font-bold mb-4">{work.title}</h1>
-            <p className="text-gray-300 mb-4">{work.description}</p>
-            <div className="text-gray-300 mb-4">
-              <strong>Topic:</strong>
-              <div className="text-white">
-               {work.topic}
+            {/* Content */}
+            <div>
+              <h1 className="text-white text-xl font-bold mb-4">{work.title}</h1>
+              <p className="text-gray-300 mb-4">{work.description}</p>
+              <div className="text-gray-300 mb-4">
+                <strong>Topic:</strong>
+                <div className="text-white">{work.topic}</div>
               </div>
-            </div>
-            <div className="mb-4">
-              <div className="text-gray-300">
-              <strong>Skills:</strong>
+              <div className="mb-4">
+                <div className="text-gray-300">
+                  <strong>Skills:</strong>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {work.skillset.map((skillset) => (
+                    <span
+                      key={skillset}
+                      className="bg-red-200 px-2.5 py-1 rounded-full text-sm font-small"
+                    >
+                      {skillset}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {work.skillset.map((skillset) => (
-                  <span
-                    key={skillset}
-                    className="bg-red-200 px-2.5 py-1 rounded-full text-sm font-small"
-                  >
-                    {skillset}
-                  </span>
-                ))}
+              <div className="mb-4">
+                <div className="text-gray-300">
+                  <strong>Methods:</strong>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {work.methods.map((methods) => (
+                    <span
+                      key={methods}
+                      className="bg-blue-200 px-2.5 py-1 rounded-full text-sm font-small"
+                    >
+                      {methods}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="mb-4">
-              <div className="text-gray-300">
-              <strong>Methods:</strong>
+              <div className="mb-4">
+                <div className="text-gray-300">
+                  <strong>Packages/Modules:</strong>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {work.packages.map((packages) => (
+                    <span
+                      key={packages}
+                      className="bg-green-200 px-2.5 py-1 rounded-full text-sm font-small"
+                    >
+                      {packages}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {work.methods.map((methods) => (
-                  <span
-                    key={methods}
-                    className="bg-blue-200 px-2.5 py-1 rounded-full text-sm font-small"
-                  >
-                    {methods}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="mb-4">
-              <div className="text-gray-300">
-              <strong>Packages/Modules:</strong>
-              </div>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {work.packages.map((packages) => (
-                  <span
-                    key={packages}
-                    className="bg-green-200 px-2.5 py-1 rounded-full text-sm font-small"
-                  >
-                    {packages}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="mb-4">
-              <div className="flex flex-wrap gap-2 mt-2">
+              <div className="mb-4">
+              <div className="flex flex-wrap gap-2 mt-8 justify-center items-center">
                 <a 
                   href={work.link}
-                  download="Resume_KokiTaniguchi.pdf"
-                  className="text-[#F5F6FA] inline-flex items-center px-6 py-3 border border-[#F5F6FA]/20 rounded-lg hover:bg-[#F5F6FA] hover:text-black transition-colors"
-                >
-                  Folder 
+                  className="relative inline-flex items-center px-6 py-3 border border-gray-300 rounded-lg 
+                  bg-white text-gray-800 shadow-md
+                  hover:bg-gray-100 hover:border-gray-400 
+                  hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out"
+                  >
+                  <span className="absolute inset-0 rounded-lg opacity-0 hover:opacity-30 bg-[#FFFFFF]/10 transition-opacity"></span>
+                  <span className="relative flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
+                      />
+                    </svg>
+                    Folder
+                  </span>
                 </a>
               </div>
             </div>
+            </div>
+          </>
+        ) : (
+          <div className="absolute inset-y-0 right-0 flex flex-col items-center justify-center gap-4 w-[5%]">
+            <button
+              onClick={() => navigate('/')}
+              className="flex items-center justify-center w-10 h-10 bg-[#FF6B6B] text-white rounded-full hover:scale-110 transition-transform"
+            >
+              <House size={20} />
+            </button>
+            <button
+              onClick={() => setIsOpen(true)}
+              className="flex items-center justify-center w-10 h-10 bg-[#FF6B6B] text-white rounded-full hover:scale-110 transition-transform"
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
         )}
 
         {/* Footer: Chevron Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="self-end bg-blue-600 text-white rounded-full p-2 hover:scale-110 transition-transform"
-        >
-          {isOpen ? <ChevronLeft size={24} /> : <ChevronRight size={24} />}
-        </button>
+        {isOpen && (
+          <button
+            onClick={() => setIsOpen(false)}
+            className="self-end bg-blue-600 text-white rounded-full p-2 hover:scale-110 transition-transform"
+          >
+            <ChevronLeft size={24} />
+          </button>
+        )}
       </div>
 
-      {/* 右側空白エリア */}
-      <div className="w-[70%] flex justify-center items-center">
-        <div className="text-gray-400">Content goes here...</div>
+      {/* 右側エリア */}
+      <div className="w-full">
+        <FileRenderer filePath={work.filePath} />
       </div>
     </div>
   );
