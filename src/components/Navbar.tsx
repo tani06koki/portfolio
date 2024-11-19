@@ -51,7 +51,7 @@ const Navbar = () => {
       {/* Desktop Navbar */}
       <nav
         className={`hidden md:block text-[#F5F6FA] fixed w-full z-50 transition-all duration-300 ${
-          scrolled ? 'bg-[#2E3A59] backdrop-blur-md shadow-lg' : 'bg-transparent'
+          scrolled ? 'bg-[#2E3A59] backdrop-blur-md shadow-lg' : 'bg-[#2E3A59]'
         }`}
       >
         <div className="container mx-auto px-4">
