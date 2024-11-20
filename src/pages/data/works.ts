@@ -143,6 +143,19 @@ export const works: Work[] = [
     methods: [],
     packages:["fpp2"],
   },
+  {
+    id: 11,
+    title: "Scrape Yahoo Finance Screeners by BeautifulSoup",
+    description: "a practice to scrape tickers from Yahoo Finance Screeners by BeautifulSoup Module",
+    imageUrl: "/project/img/11.png",
+    filePath: "/project/doc/11.html",
+    link: "https://github.com/tani06koki/scrapeYfinance",
+    type: ["Research"],
+    topic: "Web Scraping",
+    skillset: ["Python"],
+    methods: [],
+    packages:["BeautifulSoup"],
+  },
   // Add more works here
 ];
 
