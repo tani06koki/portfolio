@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, House } from 'lucide-react';
+import { ChevronRight, ChevronLeft, House, Menu } from 'lucide-react';
 import { works, Work } from './data/works';
 
 // PdfViewer, HtmlViewer, TableauViewer
@@ -52,7 +52,7 @@ const FileRenderer = ({ filePath }: { filePath: string }) => {
 const WorkDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const work = works.find((w: Work) => w.id === Number(id));
-  const [isOpen, setIsOpen] = useState(true); // 情報コンポーネントの開閉状態
+  const [isOpen, setIsOpen] = useState(false); // 情報コンポーネントの開閉状態
   const navigate = useNavigate();
 
   if (!work) {
@@ -61,23 +61,33 @@ const WorkDetail: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F5F6FA] flex">
+      {/* 上部固定バー */}
+      <div className="bg-[#2E3A59] text-white fixed top-0 left-0 w-full h-10 flex items-center justify-between px-4 z-50 shadow-md">
+        {/* ハンバーガーメニューアイコン */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-white hover:text-[#FF6B6B] focus:outline-none"
+        >
+          <Menu size={28} />
+        </button>
+        <h1 className="text-lg font-bold">Portfolio</h1>
+        <button
+          onClick={() => navigate('/')}
+          className="text-white hover:text-[#FF6B6B] focus:outline-none"
+        >
+          <House size={24} />
+        </button>
+      </div>
       {/* 左側情報コンポーネント */}
       <div
         className={`transition-all duration-300 ${
-        isOpen ? 'w-full md:w-[25%]' : 'w-[5%]'
-      } bg-[#2E3A59] shadow-md p-4 flex flex-col justify-between relative`}
+          isOpen ? 'w-full md:w-[30%] pt-20 p-5' : 'w-0 md:w-[0%] p-0'
+        } ${isOpen ? 'fixed md:static' : 'md:static'} 
+        bg-[#2E3A59] shadow-md z-0 h-full min-h-screen`}
       >
+      
         {isOpen ? (
           <>
-            {/* Header: House Icon */}
-            <div className="flex items-center mb-4">
-              <span
-                onClick={() => navigate('/')}
-                className="ml-2 text-white cursor-pointer hover:text-[#FF6B6B]"
-              >
-                ← Back to Portfolio
-              </span>
-            </div>
 
             {/* Content */}
             <div>
@@ -165,38 +175,20 @@ const WorkDetail: React.FC = () => {
             </div>
           </>
         ) : (
-          <div className="absolute inset-y-0 right-0 flex flex-col items-center justify-center gap-4 w-[5%]">
-            <button
-              onClick={() => navigate('/')}
-              className="flex items-center justify-center w-10 h-10 bg-[#FF6B6B] text-white rounded-full hover:scale-110 transition-transform"
-            >
-              <House size={20} />
-            </button>
-            <button
-              onClick={() => setIsOpen(true)}
-              className="flex items-center justify-center w-10 h-10 bg-[#FF6B6B] text-white rounded-full hover:scale-110 transition-transform"
-            >
-              <ChevronRight size={20} />
-            </button>
+          <div className="absolute inset-y-0 right-0 flex flex-col items-center justify-center w-[0%]">
           </div>
         )}
-
-        {/* Footer: Chevron Toggle */}
-        {isOpen && (
-          <button
-            onClick={() => setIsOpen(false)}
-            className="self-end bg-blue-600 text-white rounded-full p-2 hover:scale-110 transition-transform"
-          >
-            <ChevronLeft size={24} />
-          </button>
-        )}
       </div>
-
       {/* 右側エリア */}
-      <div className="w-full">
+      <div
+        className={`transition-all duration-100 ${
+          isOpen ? 'w-full md:w-full' : 'w-full'
+        } mt-10`}
+      >
         <FileRenderer filePath={work.filePath} />
       </div>
     </div>
+      
   );
 };
 
