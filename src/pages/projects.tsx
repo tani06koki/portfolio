@@ -45,7 +45,12 @@ const FileRenderer = ({ filePath }: { filePath: string }) => {
     case "tableau":
       return <TableauViewer filePath={filePath} />;
     default:
-      return <div className="flex flex-col items-center">No File to Render</div>;
+      return <div className="flex h-full items-center justify-center text-center text-gray-500">
+          <div>
+            <h1>No file found to render.</h1>
+            <p>Click the 'Menu' button in the top-left corner for more information.</p>
+          </div>
+        </div>
   }
 };
 
