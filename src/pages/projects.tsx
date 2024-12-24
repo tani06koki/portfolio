@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, House, Menu } from 'lucide-react';
-import { works, Work } from './data/works';
+import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { House, Menu } from "lucide-react";
+import { works, Work } from "./data/works";
+import * as XLSX from "xlsx";
 
 // PdfViewer, HtmlViewer, TableauViewer
 const PdfViewer = ({ filePath }: { filePath: string }) => (
@@ -34,6 +35,31 @@ const TableauViewer = ({ filePath }: { filePath: string }) => (
   ></iframe>
 );
 
+const ExcelViewer = ({ filePath }: { filePath: string }) => {
+  const [data, setData] = useState<string[][] | null>(null);
+
+  React.useEffect(() => {
+    const fetchExcelData = async () => {
+      const response = await fetch(filePath);
+      const arrayBuffer = await response.arrayBuffer();
+      const workbook = XLSX.read(arrayBuffer, { type: "array" });
+      const firstSheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[firstSheetName];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+      setData(jsonData as string[][]);
+    };
+
+    fetchExcelData();
+  }, [filePath]);
+
+  return data ? (
+    <div id="excel-container" style={{ height: "100%", width: "100%" }}></div>
+  ) : (
+    <div>Loading...</div>
+  );
+};
+
+
 // FileRenderer
 const FileRenderer = ({ filePath }: { filePath: string }) => {
   const fileType = filePath.split('.').pop(); // ファイル拡張子を取得
@@ -44,12 +70,15 @@ const FileRenderer = ({ filePath }: { filePath: string }) => {
       return <HtmlViewer filePath={filePath} />;
     case "tableau":
       return <TableauViewer filePath={filePath} />;
-    default:
-      return <div className="flex h-full items-center justify-center text-center text-gray-500">
-          <div>
-            <h1>No file found to render.</h1>
-            <p>Click the 'Menu' button in the top-left corner for more information.</p>
-          </div>
+    case "xlsx":
+      case "xls":
+        return <ExcelViewer filePath={filePath} />;
+      default:
+    return <div className="flex h-full items-center justify-center text-center text-gray-500">
+        <div>
+          <h1>No file found to render.</h1>
+          <p>Click the 'Menu' button in the top-left corner for more information.</p>
+        </div>
         </div>
   }
 };

@@ -11,7 +11,7 @@ interface SkillSet {
 const Skill: React.FC = () => {
   const skills: SkillSet[] = [
     { icons: Code, category: "Coding", items: ["R", "Python", "SQL", "JavaScript", "VBA", "GAS"] },
-    { icons: Cloud, category: "Cloud", items: ["Azure", "AWS", "Cloudflare"] },
+    { icons: Cloud, category: "Cloud", items: ["Azure"] },
     { icons: ChartNoAxesCombined, category: "Finance", items: ["Portfolio Management", "Derivatives", "Credit Analysis", "Corporate Finance"] },
     { icons: Paintbrush, category: "Frontend", items: ["React", "TypeScript", "Next.js", "Tailwind CSS"] },
     { icons: ServerCog, category: "Backend/DB", items: ["Snowflake", "PostgreSQL", "MongoDB"] },

@@ -24,7 +24,7 @@ const Works: React.FC = () => {
 
         {/* タイプフィルター */}
         <div className="flex w-full max-w-[80%] gap-4 pb-28 px-4 justify-center items-center mx-auto">
-          {["App/Website", "Research", "Visualisation"].map((type) => (
+          {["Development", "Research", "Visualisation", "Practice"].map((type) => (
             <button
               key={type}
               onClick={() => setSelectedType(selectedType === type ? null : type)}
