@@ -44,7 +44,7 @@ export const works: Work[] = [
     title: "Technical Analysis of Small-Agressive Stock prices",
     description: "I did this code for the reflective essay for an investing unit in my university. The refrective essay can be seen in the folder link below",
     imageUrl: "/project/03/img/03.png",
-    filePath: "/project/03/doc/03.html",
+    filePath: "/project/03/doc/r.html",
     link: "https://github.com/tani06koki/TechnicalAnalysis_Practice.git",
     type: ["Practice"],
     topic: "Finance",
